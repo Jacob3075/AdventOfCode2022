@@ -13,6 +13,21 @@ pub fn part1() {
     };
 }
 
+pub fn part2() {
+    let mut sum_of_groups = get_input_data()
+        .split("\n\n")
+        .filter(|group| !group.is_empty())
+        .map(sum_elements_in_group)
+        .collect::<Vec<u32>>();
+
+    sum_of_groups.sort();
+    sum_of_groups.reverse();
+
+    let result: u32 = sum_of_groups.iter().take(3).sum();
+
+    println!("{result}")
+}
+
 fn get_input_data() -> String {
     fs::read_to_string("data/day01/input.txt").expect("File not found")
 }
