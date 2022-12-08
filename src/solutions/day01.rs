@@ -8,7 +8,7 @@ pub fn part1() {
         .max();
 
     match result {
-        Some(expr) => println!("{expr}"),
+        Some(expr) => println!("{:?}", expr),
         None => println!("No value found"),
     };
 }
@@ -25,7 +25,7 @@ pub fn part2() {
 
     let result: u32 = sum_of_groups.iter().take(3).sum();
 
-    println!("{result}")
+    println!("{:?}", result)
 }
 
 fn get_input_data() -> String {
