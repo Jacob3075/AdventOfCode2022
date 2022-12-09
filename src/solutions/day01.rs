@@ -1,19 +1,16 @@
 use std::fs;
 
-pub fn part1() {
+pub fn part1() -> u32 {
     let result = get_input_data()
         .split("\n\n")
         .filter(|group| !group.is_empty())
         .map(sum_elements_in_group)
-        .max();
-
-    match result {
-        Some(expr) => println!("{:?}", expr),
-        None => println!("No value found"),
-    };
+        .max()
+        .unwrap();
+    result
 }
 
-pub fn part2() {
+pub fn part2() -> u32 {
     let mut sum_of_groups = get_input_data()
         .split("\n\n")
         .filter(|group| !group.is_empty())
@@ -23,9 +20,7 @@ pub fn part2() {
     sum_of_groups.sort();
     sum_of_groups.reverse();
 
-    let result: u32 = sum_of_groups.iter().take(3).sum();
-
-    println!("{:?}", result)
+    sum_of_groups.iter().take(3).sum()
 }
 
 fn get_input_data() -> String {
